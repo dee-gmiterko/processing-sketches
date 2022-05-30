@@ -1,8 +1,7 @@
 package me.ienze.processing.ponyo;
 
-import com.sk89q.worldedit.internal.expression.Expression;
-import com.sk89q.worldedit.internal.expression.ExpressionException;
-import com.sk89q.worldedit.internal.expression.runtime.EvaluationException;
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
 
 public class Transformable {
 
@@ -19,16 +18,14 @@ public class Transformable {
     public float transform(double x) {
         double result = 0.0;
         if(expression != null) {
-            try {
-                result = expression.evaluate(x, ponyo.frameCount);
-            } catch (EvaluationException e) {
-                e.printStackTrace();
-            }
+            result = expression
+                .setVariable("x", x)
+                .setVariable("t", ponyo.frameCount)
+                .evaluate();
         }
         if(parent != null) {
             result += parent.transform(x);
         }
-//        result += ponyo.random(-1, 1);
         return (float) result;
     }
 
@@ -37,11 +34,9 @@ public class Transformable {
     }
 
     public void setExpression(String expression) {
-        try {
-            this.expression = Expression.compile(expression, "x", "t");
-        } catch (ExpressionException e) {
-            e.printStackTrace();
-        }
+        this.expression = new ExpressionBuilder(expression)
+            .variables("x", "t")
+            .build();
     }
 
     public void setExpression(Expression expression) {

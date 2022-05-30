@@ -13,8 +13,8 @@ public class Ponyo extends PApplet {
     private boolean capture;
 
     public void settings() {
-//        size(800, 800);
-        fullScreen();
+        size(800, 800);
+        // fullScreen();
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Ponyo extends PApplet {
         sea.render();
 
         if(capture && frameCount % CAPTURE_SPEED == 0) {
-            saveFrame("otuput/####.png");
+            saveFrame("output/####.png");
         }
     }
 
