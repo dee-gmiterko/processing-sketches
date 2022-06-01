@@ -1,0 +1,51 @@
+.ground {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  overflow: hidden;
+
+  .tree {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+
+    .fern {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transition: transform 1s linear;
+      background: #2f4c82;
+      width: 5px;
+      height: 5px;
+      border-radius: 5px;
+
+      .leaf {
+        position: absolute;
+        width: 16px;
+        height: 4px;
+        transform-origin: left center;
+        transition: transform;
+
+        .leaf-img {
+          transform-origin: left center;
+          width: 100%;
+          height: 100%;
+          background: magenta;
+          mask-image: url(../../leaf.png);
+          mask-size: 100% 100%;
+          animation: grow 1s linear;
+          animation-fill-mode: both;
+          transition: transform;
+        }
+      }
+    }
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
