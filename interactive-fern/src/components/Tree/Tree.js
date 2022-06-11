@@ -24,7 +24,7 @@ const Tree = ({tree}) => {
                   className="leaf"
                   style={{
                     left: `${2 + 3*li}px`,
-                    transform: `rotate(${li%2==0 ? '' : '-'}60deg) scale(${1.2-li/fern.length})`,
+                    transform: `rotate(${li%2===0 ? '' : '-'}60deg) scale(${1.2-li/fern.length})`,
                   }}
                 >
                   <div

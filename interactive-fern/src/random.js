@@ -1,3 +1,5 @@
+/* eslint-disable no-mixed-operators */
+
 export function MurmurHash3(string) {
     let hash = 1779033703 ^ string.length;
     for (let i = 0; i < string.length; i++) {
